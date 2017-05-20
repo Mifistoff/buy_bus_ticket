@@ -1,0 +1,31 @@
+<h1>Додати новий автобус</h1>
+
+<%= form_for :bus, url: buses_path do |f| %>
+    <p>
+      <%= f.label :number_of_tickets, "Кількість місць" %>
+      <%= f.text_field :number_of_tickets%>
+    </p>
+
+    <table>
+      <tr>
+        <td><%= f.label :departure, "Станція відправлення" %></td>
+        <td><%= f.label :departure_time, "Час відправлення" %></td>
+      </tr>
+      <tr>
+        <td><%= f.text_field :departure %></td>
+        <td><%= f.datetime_select :departure_time %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :destination, "Станція прибуття" %></td>
+        <td><%= f.label :destination_time, "Час прибуття" %></td>
+      </tr>
+      <tr>
+        <td><%= f.text_field :destination %></td>
+        <td><%= f.datetime_select :destination_time %></td>
+      </tr>
+    </table>
+    <p>
+      <%= submit_tag("Додати") %>
+    </p>
+
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Список автобусів</h1>
+<% if is_admin? %>
+  <p><%= link_to 'Додати автобус', new_bus_path %></p>
+<% else %>
+  <%= form_tag(buses_path, :method => 'get', id: 'search-form') do %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Місце відправлення' %>
+      <%= submit_tag 'Пошук' %>
+  <% end %>
+    <br>
+<% end %>
+
+
+<table border="1px">
+  <tr>
+    <th>Назва</th>
+    <th>Час відправлення</th>
+    <th>Час прибуття</th>
+    <th>Квитки</th>
+  </tr>
+  <% @buses.each do |bus| %>
+  <tr>
+    <td><%= bus.name %></td>
+    <td><%= bus.departure_time %></td>
+    <td><%= bus.destination_time %></td>
+    <td><%= bus.available_tickets %> / <%= bus.number_of_tickets %></td>
+    <td><%= link_to 'Докладніше', bus_path(bus) %></td>
+  </tr>
+  <% end %>
+</table>

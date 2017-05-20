@@ -1,0 +1,13 @@
+<% if is_admin? %>
+    <tr>
+      <td><%= order.user_login %></td>
+      <td><%= order.ticket_number %></td>
+    </tr>
+<% else %>
+    <tr>
+      <td><%= order.bus_name %></td>
+      <td><%= order.bus_departure_time %></td>
+      <td><%= order.ticket_number %></td>
+    </tr>
+<% end %>
+

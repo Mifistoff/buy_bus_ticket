@@ -1,0 +1,21 @@
+<% case ticket.availability %>
+      <%# якщо квиток доступний %>
+      <% when 0 %>
+        <td style="border: 2px solid green; border-radius: 4px; text-align: center; width: 2em">
+          <%= link_to ticket.number, "/buses/#{ticket.bus_id}/tickets/#{ticket.id}/edit"%>
+        </td>
+      <%# якщо квиток придбаний  %>
+      <% when 1%>
+        <td style="border: 2px solid red; border-radius: 4px; text-align: center; width: 2em">
+          <%= ticket.number %>
+        </td>
+      <%# якщо квиток заброньований %>
+      <% when 2%>
+        <td style="border: 2px solid black; border-radius: 4px; text-align: center; width: 2em">
+          <%= ticket.number %>
+        </td>
+  <% end %>
+
+  <% if ticket.number%10==0 %>
+      </tr>
+  <% end %>

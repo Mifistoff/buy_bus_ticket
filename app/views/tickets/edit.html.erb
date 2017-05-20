@@ -1,0 +1,13 @@
+<h1>Придбати квиток</h1>
+
+<p>Маршрут: <%= @bus.name %> </p>
+
+<p>Час відправлення: <%= @bus.departure_time %></p>
+
+<p>Номер квитка: <%= @ticket.number %> </p>
+
+<%= button_to "Придбати", action: "update" %>
+
+<p><%= link_to 'Повернутись до автобусу', bus_path(@bus) %></p>
+
+

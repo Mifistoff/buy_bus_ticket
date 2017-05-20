@@ -1,0 +1,53 @@
+<h1>Інформація про автобус</h1>
+
+<p>
+  Кількість місць:
+  <%= @bus.number_of_tickets %>
+</p>
+
+<table>
+  <tr>
+    <td> Станція відправлення</td>
+    <td> Час відправлення </td>
+  </tr>
+  <tr>
+    <td><%= @bus.departure %></td>
+    <td><%= @bus.departure_time %></td>
+  </tr>
+  <tr>
+    <td> Станція прибуття </td>
+    <td> Час прибуття </td>
+  </tr>
+  <tr>
+    <td><%= @bus.destination %></td>
+    <td><%= @bus.destination_time %></td>
+  </tr>
+</table>
+
+<br>
+<% if is_admin? %>
+    <% if @bus.orders.size == 0 %>
+      <h1>Жоден квиток не придбаний</h1>
+        <p>Бажаєте <%= link_to 'Відредагувати', edit_bus_path(@bus) %> чи
+          <%= link_to 'Видалити', bus_path(@bus),
+                    method: :delete,
+                    data: { confirm: 'Ви впевнені?' } %>?</p>
+    <% else %>
+      <h1>Список покупців</h1>
+      <table border="1px">
+        <tr>
+          <th>Логін</th>
+          <th>Номер місця</th>
+        </tr>
+        <%= render @bus.orders %>
+      </table>
+    <% end %>
+<% else %>
+    <table>
+      <tr>
+        <%= render @bus.tickets %>
+    </table>
+<% end %>
+
+
+<p><%= link_to 'Повернутись до огляду маршрутів', buses_path %></p>

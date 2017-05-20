@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_of_tickets: 1
+  departure: MyString
+  departure_time: 2017-05-17 17:54:05
+  destination: MyString
+  destination_time: 2017-05-17 17:54:05
+
+two:
+  number_of_tickets: 1
+  departure: MyString
+  departure_time: 2017-05-17 17:54:05
+  destination: MyString
+  destination_time: 2017-05-17 17:54:05

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BuyBusTicket</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div style="float: right;">
+    <% if is_admin? %>
+      <span style="display: inline-block;"><%= user_context %></span>
+    <% else %>
+        <span style="display: inline-block;"><%= link_to user_context, user_path(user_id) %></span>
+    <% end %>
+    <span style="display: inline-block;"><%= button_to 'Вийти', '/logout' %></span>
+  </div>
+    <%= yield %>
+  </body>
+</html>

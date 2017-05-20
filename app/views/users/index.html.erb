@@ -1,0 +1,15 @@
+<h1>Список користувачів</h1>
+
+<table width="60%", border="1px">
+  <tr>
+    <th>Логін</th>
+    <th>Доступ</th>
+  </tr>
+  <% @users.each do |u| %>
+      <tr>
+        <td width="65%"><%= u.login %></td>
+        <td width="20%"><%= u.string_role %></td>
+        <td width="15%"><%= link_to 'Докладніше', user_path(u) %></td>
+      </tr>
+  <% end %>
+</table>
