@@ -4,15 +4,15 @@ class Bus < ApplicationRecord
   attr_reader :name
   has_many :orders
 
-  def name
+  def name #name of bus from start and final stations
     departure + ' - ' + destination
   end
 
-  def available_tickets
+  def available_tickets #how many tickets not purchased
     Ticket.where(bus_id: id, availability: 0).size
   end
 
-  def self.search(search)
+  def self.search(search) #for search form on bus list
     if search
       where('departure LIKE ?', "%#{search}%")
     else

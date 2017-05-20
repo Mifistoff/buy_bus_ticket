@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     @ticket.availability = 1
-    if @ticket.save
+    if @ticket.save #create new oder if ticket purchased
       Order.create(user_id: session[:uid], bus_id: @ticket.bus_id, ticket_id: @ticket.id)
       redirect_to buses_path
     end

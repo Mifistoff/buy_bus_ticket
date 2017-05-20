@@ -21,7 +21,7 @@ before_action :user_login_check
   def create
     @bus = Bus.new(bus_params)
 
-    if @bus.save
+    if @bus.save #add tickets on db
       add_tickets(@bus)
     end
     redirect_to @bus
@@ -45,7 +45,7 @@ before_action :user_login_check
   end
 
   private
-  def bus_params
+  def bus_params  #parameters for bus
     params.require(:bus).permit(:number_of_tickets, :departure, :departure_time, :destination, :destination_time)
   end
 

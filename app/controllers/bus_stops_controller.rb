@@ -12,7 +12,7 @@ class BusStopsController < ApplicationController
   end
 
   private
-  def bus_stop_params
+  def bus_stop_params #params of bus stop
     params.require(:bus_stop).permit(:number, :name, :arrival_time)
   end
 end

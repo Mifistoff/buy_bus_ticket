@@ -5,7 +5,7 @@ class LoginController < ApplicationController
 
   end
 
-  def login
+  def login #if logged in go to bus list
     user = User.find_by_login(params[:login])
     if user && user.password == params[:password]
       session[:uid] = user.id
@@ -15,7 +15,7 @@ class LoginController < ApplicationController
     end
   end
 
-  def logout
+  def logout #if log out go to start/login page
     if session
       reset_session
       redirect_to '/'
