@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20170519185930) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bus_stops", force: :cascade do |t|
     t.integer "number"
     t.string "name"
     t.time "arrival_time"
-    t.integer "bus_id"
+    t.bigint "bus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bus_id"], name: "index_bus_stops_on_bus_id"
@@ -33,9 +36,9 @@ ActiveRecord::Schema.define(version: 20170519185930) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "bus_id"
-    t.integer "ticket_id"
+    t.bigint "user_id"
+    t.bigint "bus_id"
+    t.bigint "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bus_id"], name: "index_orders_on_bus_id"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170519185930) do
   create_table "tickets", force: :cascade do |t|
     t.integer "number"
     t.integer "availability"
-    t.integer "bus_id"
+    t.bigint "bus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bus_id"], name: "index_tickets_on_bus_id"
@@ -60,4 +63,9 @@ ActiveRecord::Schema.define(version: 20170519185930) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bus_stops", "buses"
+  add_foreign_key "orders", "buses"
+  add_foreign_key "orders", "tickets"
+  add_foreign_key "orders", "users"
+  add_foreign_key "tickets", "buses"
 end
