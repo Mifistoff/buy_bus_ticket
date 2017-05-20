@@ -12,9 +12,6 @@ class LoginController < ApplicationController
       session[:login] = user.login
       session[:role] = user.role
       redirect_to buses_path
-    else
-      flash[:notice] = 'Incorrect login or password'
-      redirect_to login_path
     end
   end
 
